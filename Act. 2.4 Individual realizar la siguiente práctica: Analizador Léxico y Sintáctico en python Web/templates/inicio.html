@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Léxico-Sintáctico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        body {
+            background-color: #2b2b2b;
+            color: #fff;
+            font-family: monospace;
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #66d9ef;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .code-input {
+            width: 100%;
+            height: 200px;
+            padding: 5;
+            font-size: 16px;
+            background-color: #444;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 10px;
+            font-family: 'VT323', monospace !important;
+            color: #33cc33; /* Color verde */
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #66d9ef;
+        }
+
+        .analyze-button {
+            background-color: #66d9ef;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size:x-large
+        }
+
+        .analyze-button:hover {
+            background-color: #4CAF50;
+        }
+
+        .results-container {
+            margin-top: 20px;
+        }
+
+        .tokens-box {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #555;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="title">
+            <h1>Analizador Lexico-Sintactico</h1>
+        </div>
+        <div class="input-container">
+            <form method="POST" action="/">
+                <textarea name="code" id="code" class="code-input" rows="10" cols="50" placeholder="Escribe tu código aquí..."></textarea>
+                <br>
+                <button class="analyze-button" type="submit">Analizar</button>
+            </form>
+        </div>
+        <div class="results-container">
+            {% if input %}
+            <h2>Código Analizado</h2>
+            <textarea readonly id="txt" class="code-input" rows="11">{{ input }}</textarea>
+            {% if sintaxis != "Análisis exitoso del 'for'" %}
+                <p style="color: #ff0000">{{ sintaxis }}</p>
+            {% else %}
+                <p style="color: #33cc33">No hay errores de sintaxis</p>
+            {% endif %}
+            {% endif %}
+            <h2>Resultados del Análisis Léxico</h2>
+            <table>
+                {% if tokens %}
+                    <tr>
+                        <th>Token</th>
+                        <th>Valor</th>
+                        <th>Línea</th>
+                    </tr>
+                    {% for token in tokens %}
+                    <tr>
+                        <td>{{ token[0] }}</td>
+                        <td>{{ token[1] }}</td>
+                        <td>{{ token[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <tr><td colspan="3">No se encontraron tokens</td></tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
