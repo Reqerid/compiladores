@@ -1,0 +1,334 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMILLA
+
+Grammar
+
+Rule 0     S' -> inicio
+Rule 1     inicio -> using_directiva namespace
+Rule 2     using_directiva -> USING IDENTIFICADOR PUNTO IDENTIFICADOR PUNTO
+Rule 3     namespace -> NAMESPACE IDENTIFICADOR LLAVEIZQ bloque LLAVEDER
+Rule 4     bloque -> declaracion_clase
+Rule 5     declaracion_clase -> CLASS IDENTIFICADOR LLAVEIZQ bloque_main LLAVEDER
+Rule 6     bloque_main -> declaracion_main
+Rule 7     declaracion_main -> STATIC VOID MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion
+Rule 8     bloque_instruccion -> LLAVEIZQ instruccion LLAVEDER
+Rule 9     instruccion -> IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA PARDER PUNTO
+
+Terminals, with rules where they appear
+
+CADENA               : 9
+CLASS                : 5
+COMILLA              : 
+IDENTIFICADOR        : 2 2 3 5 7 9
+LLAVEDER             : 3 5 8
+LLAVEIZQ             : 3 5 8
+MAIN                 : 7
+NAMESPACE            : 3
+PARDER               : 7 9
+PARIZQ               : 7 9
+PUNTO                : 2 2 9 9
+STATIC               : 7
+USING                : 2
+VOID                 : 7
+WRITE_LINE           : 9
+error                : 
+
+Nonterminals, with rules where they appear
+
+bloque               : 3
+bloque_instruccion   : 7
+bloque_main          : 5
+declaracion_clase    : 4
+declaracion_main     : 6
+inicio               : 0
+instruccion          : 8
+namespace            : 1
+using_directiva      : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . inicio
+    (1) inicio -> . using_directiva namespace
+    (2) using_directiva -> . USING IDENTIFICADOR PUNTO IDENTIFICADOR PUNTO
+
+    USING           shift and go to state 3
+
+    inicio                         shift and go to state 1
+    using_directiva                shift and go to state 2
+
+state 1
+
+    (0) S' -> inicio .
+
+
+
+state 2
+
+    (1) inicio -> using_directiva . namespace
+    (3) namespace -> . NAMESPACE IDENTIFICADOR LLAVEIZQ bloque LLAVEDER
+
+    NAMESPACE       shift and go to state 5
+
+    namespace                      shift and go to state 4
+
+state 3
+
+    (2) using_directiva -> USING . IDENTIFICADOR PUNTO IDENTIFICADOR PUNTO
+
+    IDENTIFICADOR   shift and go to state 6
+
+
+state 4
+
+    (1) inicio -> using_directiva namespace .
+
+    $end            reduce using rule 1 (inicio -> using_directiva namespace .)
+
+
+state 5
+
+    (3) namespace -> NAMESPACE . IDENTIFICADOR LLAVEIZQ bloque LLAVEDER
+
+    IDENTIFICADOR   shift and go to state 7
+
+
+state 6
+
+    (2) using_directiva -> USING IDENTIFICADOR . PUNTO IDENTIFICADOR PUNTO
+
+    PUNTO           shift and go to state 8
+
+
+state 7
+
+    (3) namespace -> NAMESPACE IDENTIFICADOR . LLAVEIZQ bloque LLAVEDER
+
+    LLAVEIZQ        shift and go to state 9
+
+
+state 8
+
+    (2) using_directiva -> USING IDENTIFICADOR PUNTO . IDENTIFICADOR PUNTO
+
+    IDENTIFICADOR   shift and go to state 10
+
+
+state 9
+
+    (3) namespace -> NAMESPACE IDENTIFICADOR LLAVEIZQ . bloque LLAVEDER
+    (4) bloque -> . declaracion_clase
+    (5) declaracion_clase -> . CLASS IDENTIFICADOR LLAVEIZQ bloque_main LLAVEDER
+
+    CLASS           shift and go to state 13
+
+    bloque                         shift and go to state 11
+    declaracion_clase              shift and go to state 12
+
+state 10
+
+    (2) using_directiva -> USING IDENTIFICADOR PUNTO IDENTIFICADOR . PUNTO
+
+    PUNTO           shift and go to state 14
+
+
+state 11
+
+    (3) namespace -> NAMESPACE IDENTIFICADOR LLAVEIZQ bloque . LLAVEDER
+
+    LLAVEDER        shift and go to state 15
+
+
+state 12
+
+    (4) bloque -> declaracion_clase .
+
+    LLAVEDER        reduce using rule 4 (bloque -> declaracion_clase .)
+
+
+state 13
+
+    (5) declaracion_clase -> CLASS . IDENTIFICADOR LLAVEIZQ bloque_main LLAVEDER
+
+    IDENTIFICADOR   shift and go to state 16
+
+
+state 14
+
+    (2) using_directiva -> USING IDENTIFICADOR PUNTO IDENTIFICADOR PUNTO .
+
+    NAMESPACE       reduce using rule 2 (using_directiva -> USING IDENTIFICADOR PUNTO IDENTIFICADOR PUNTO .)
+
+
+state 15
+
+    (3) namespace -> NAMESPACE IDENTIFICADOR LLAVEIZQ bloque LLAVEDER .
+
+    $end            reduce using rule 3 (namespace -> NAMESPACE IDENTIFICADOR LLAVEIZQ bloque LLAVEDER .)
+
+
+state 16
+
+    (5) declaracion_clase -> CLASS IDENTIFICADOR . LLAVEIZQ bloque_main LLAVEDER
+
+    LLAVEIZQ        shift and go to state 17
+
+
+state 17
+
+    (5) declaracion_clase -> CLASS IDENTIFICADOR LLAVEIZQ . bloque_main LLAVEDER
+    (6) bloque_main -> . declaracion_main
+    (7) declaracion_main -> . STATIC VOID MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion
+
+    STATIC          shift and go to state 20
+
+    bloque_main                    shift and go to state 18
+    declaracion_main               shift and go to state 19
+
+state 18
+
+    (5) declaracion_clase -> CLASS IDENTIFICADOR LLAVEIZQ bloque_main . LLAVEDER
+
+    LLAVEDER        shift and go to state 21
+
+
+state 19
+
+    (6) bloque_main -> declaracion_main .
+
+    LLAVEDER        reduce using rule 6 (bloque_main -> declaracion_main .)
+
+
+state 20
+
+    (7) declaracion_main -> STATIC . VOID MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion
+
+    VOID            shift and go to state 22
+
+
+state 21
+
+    (5) declaracion_clase -> CLASS IDENTIFICADOR LLAVEIZQ bloque_main LLAVEDER .
+
+    LLAVEDER        reduce using rule 5 (declaracion_clase -> CLASS IDENTIFICADOR LLAVEIZQ bloque_main LLAVEDER .)
+
+
+state 22
+
+    (7) declaracion_main -> STATIC VOID . MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion
+
+    MAIN            shift and go to state 23
+
+
+state 23
+
+    (7) declaracion_main -> STATIC VOID MAIN . PARIZQ IDENTIFICADOR PARDER bloque_instruccion
+
+    PARIZQ          shift and go to state 24
+
+
+state 24
+
+    (7) declaracion_main -> STATIC VOID MAIN PARIZQ . IDENTIFICADOR PARDER bloque_instruccion
+
+    IDENTIFICADOR   shift and go to state 25
+
+
+state 25
+
+    (7) declaracion_main -> STATIC VOID MAIN PARIZQ IDENTIFICADOR . PARDER bloque_instruccion
+
+    PARDER          shift and go to state 26
+
+
+state 26
+
+    (7) declaracion_main -> STATIC VOID MAIN PARIZQ IDENTIFICADOR PARDER . bloque_instruccion
+    (8) bloque_instruccion -> . LLAVEIZQ instruccion LLAVEDER
+
+    LLAVEIZQ        shift and go to state 28
+
+    bloque_instruccion             shift and go to state 27
+
+state 27
+
+    (7) declaracion_main -> STATIC VOID MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion .
+
+    LLAVEDER        reduce using rule 7 (declaracion_main -> STATIC VOID MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion .)
+
+
+state 28
+
+    (8) bloque_instruccion -> LLAVEIZQ . instruccion LLAVEDER
+    (9) instruccion -> . IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA PARDER PUNTO
+
+    IDENTIFICADOR   shift and go to state 30
+
+    instruccion                    shift and go to state 29
+
+state 29
+
+    (8) bloque_instruccion -> LLAVEIZQ instruccion . LLAVEDER
+
+    LLAVEDER        shift and go to state 31
+
+
+state 30
+
+    (9) instruccion -> IDENTIFICADOR . PUNTO WRITE_LINE PARIZQ CADENA PARDER PUNTO
+
+    PUNTO           shift and go to state 32
+
+
+state 31
+
+    (8) bloque_instruccion -> LLAVEIZQ instruccion LLAVEDER .
+
+    LLAVEDER        reduce using rule 8 (bloque_instruccion -> LLAVEIZQ instruccion LLAVEDER .)
+
+
+state 32
+
+    (9) instruccion -> IDENTIFICADOR PUNTO . WRITE_LINE PARIZQ CADENA PARDER PUNTO
+
+    WRITE_LINE      shift and go to state 33
+
+
+state 33
+
+    (9) instruccion -> IDENTIFICADOR PUNTO WRITE_LINE . PARIZQ CADENA PARDER PUNTO
+
+    PARIZQ          shift and go to state 34
+
+
+state 34
+
+    (9) instruccion -> IDENTIFICADOR PUNTO WRITE_LINE PARIZQ . CADENA PARDER PUNTO
+
+    CADENA          shift and go to state 35
+
+
+state 35
+
+    (9) instruccion -> IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA . PARDER PUNTO
+
+    PARDER          shift and go to state 36
+
+
+state 36
+
+    (9) instruccion -> IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA PARDER . PUNTO
+
+    PUNTO           shift and go to state 37
+
+
+state 37
+
+    (9) instruccion -> IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA PARDER PUNTO .
+
+    LLAVEDER        reduce using rule 9 (instruccion -> IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA PARDER PUNTO .)
+
