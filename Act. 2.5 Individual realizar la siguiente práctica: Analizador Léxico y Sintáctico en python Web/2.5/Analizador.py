@@ -194,3 +194,26 @@ class AnalizadorSintactico:
         self.resultado_lexema = self.analizador_lexico.analizar(data)
         self.resultado_lexema_c = self.analizador_lexico.rc
         return self.errormsg 
+    
+from flask import Flask, render_template, request
+import Analizador
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        code = request.form.get('code', '')
+
+        analizador = Analizador.AnalizadorLexico()
+        asena = Analizador.AnalizadorSintactico(analizador)
+        sintaxis = asena.analizar(code)
+
+        return render_template('index.html', tokens=asena.resultado_lexema, tkeys = asena.resultado_lexema_c, input=code, error_sena = sintaxis)
+    
+    return render_template('index.html', tokens=None, error_sena = None)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
