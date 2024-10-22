@@ -53,6 +53,10 @@ body {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
+    
+}
+.guardado{
+    margin-block: 3% ;
 }
 
 .button:hover {
@@ -179,5 +183,24 @@ body {
 #guardar:hover {
     background-color: #ff33ff; /* Color de fondo al pasar el ratón */
     transform: scale(1.05); /* Agrandar un poco el botón */
+}
+
+.button-result {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno */
+    text-align: center; /* Centrar texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar en línea */
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 4px 2px; /* Margen */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    border-radius: 5px; /* Esquinas redondeadas */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.button-result:hover {
+    background-color: #45a049; /* Color de fondo al pasar el mouse */
 }
 

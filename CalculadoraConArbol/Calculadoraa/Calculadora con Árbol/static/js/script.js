@@ -23,19 +23,41 @@ document.addEventListener("DOMContentLoaded", function () {
     labels.forEach(label => {
         const button = document.createElement('button');
         button.className = 'button';
-        button.innerText = label;
-
-        if (actions[label]) {
-            button.setAttribute('onclick', actions[label]);
-            if (label !== 'C') {
-                button.classList.add('operator');
+    
+        // Verifica si el botón es "ÁRBOL"
+        if (label === 'Árbol') {
+            button.style.backgroundImage = "url('./static/arbol.png')"; // Cambia la ruta por la de tu imagen
+            button.style.backgroundSize = "cover"; // Asegúrate de que la imagen cubra el botón
+            button.style.width = "75px"; // Ajusta el ancho según sea necesario
+            button.style.height = "75px"; // Ajusta la altura según sea necesario
+            button.style.border = "none"; // Quita el borde del botón si es necesario
+            button.style.cursor = "pointer"; // Cambia el cursor al pasar sobre el botón
+        
+            if (actions[label]) {
+                
+                button.setAttribute('onclick', actions[label]);
+                if (label !== 'C') {
+                    button.classList.add('operator');
+                }
+            } else {
+                button.setAttribute('onclick', `appendToDisplay('${label}')`);
             }
         } else {
-            button.setAttribute('onclick', `appendToDisplay('${label}')`);
+            
+            button.innerText = label; // Para otros botones, usa el texto
+            if (actions[label]) {
+                button.setAttribute('onclick', actions[label]);
+                if (label !== 'C') {
+                    button.classList.add('operator');
+                }
+            } else {
+                button.setAttribute('onclick', `appendToDisplay('${label}')`);
+            }
         }
-
+    
         container.appendChild(button);
     });
+    
 
     document.getElementById('show-tree').addEventListener('click', showTree);
 });
@@ -59,27 +81,6 @@ function calculateResult() {
     });
 }
 
-function updateTokenTable(tokens) {
-    const tbody = document.getElementById('token-body');
-    const table = document.querySelector('.token-table');
-
-    tbody.innerHTML = '';
-
-    tokens.forEach(([token, tipo]) => {
-        const row = document.createElement('tr');
-        const tokenCell = document.createElement('td');
-        const tipoCell = document.createElement('td');
-
-        tokenCell.textContent = token;
-        tipoCell.textContent = tipo;
-
-        row.appendChild(tokenCell);
-        row.appendChild(tipoCell);
-        tbody.appendChild(row);
-    });
-
-    table.classList.remove('oculto');
-}
 
 function showTree() {
     const expression = document.getElementById('display').value;
@@ -237,11 +238,20 @@ function actualizarTabla() {
         const resultadoCell = document.createElement('td'); // Crear celda para el resultado
         const buttonCell = document.createElement('td'); // Crear celda para el botón
 
-        resultadoCell.textContent = resultado; // Asignar el resultado a la celda
-        buttonCell.innerHTML = `<button onclick="usarResultado('${resultado}')">Usar</button>`; // Crear el botón "Usar"
+        
+        // Crear un botón para el resultado
+        const resultButton = document.createElement('button');
+        resultButton.textContent = resultado; // Asignar el resultado al botón
+        resultButton.className = 'button-result'; // Asignar la clase de estilo
+        resultButton.onclick = () => usarResultado(resultado); // Asignar la acción al botón
+
+
+        // Añadir el botón a la celda del resultado
+        resultadoCell.appendChild(resultButton);
+        
+
 
         row.appendChild(resultadoCell); // Agregar la celda del resultado a la fila
-        row.appendChild(buttonCell); // Agregar la celda del botón a la fila
         tbody.appendChild(row); // Agregar la fila al cuerpo de la tabla
     });
 }
