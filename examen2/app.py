@@ -7,8 +7,9 @@ app = Flask(__name__)
 # Definición de tokens
 tokens = (
     'USING', 'NAMESPACE', 'CLASS', 'STATIC', 'VOID', 'MAIN', 
-    'PARIZQ', 'PARDER', 'LLAVEIZQ', 'LLAVEDER', 'PUNTO', 
-    'COMILLA', 'CADENA', 'IDENTIFICADOR', 'WRITE_LINE'
+    'PARIZQ', 'PARDER','STRING', 'LLAVEIZQ', 'LLAVEDER', 'PUNTO', 
+    'CADENA', 'IDENTIFICADOR', 'SYSTEM', 'CONSOLE','WRITE_LINE'
+
 )
 
 # Definir tokens simples
@@ -17,11 +18,27 @@ t_PARDER = r'\)'
 t_LLAVEIZQ = r'\{'
 t_LLAVEDER = r'\}'
 t_PUNTO = r'\.'
+t_PUNTOCOMA = r';'
+t_CORCHETEIZQ = r'\['
+t_CORCHETEDER = r'\]'
+
+
+
 
 # Definir comillas para cadenas
-t_COMILLA = r'\"'
 
 # Definir palabras reservadas
+def t_WRITE_LINE(t):
+    r'WriteLine'
+    return t
+def t_STRING(t):
+    r'\bstring\b'
+def t_CONSOLE(t):
+    r'\bConsole\b'
+
+def t_SYSTEM(t):
+    r'\bSystem\b'
+
 def t_USING(t):
     r'\busing\b'
     return t
@@ -46,9 +63,7 @@ def t_MAIN(t):
     r'\bMain\b'
     return t
 
-def t_WRITE_LINE(t):
-    r'WriteLine'
-    return t
+
 
 # Definir identificadores
 t_IDENTIFICADOR = r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -87,43 +102,10 @@ def analizar_lexico(data):
 # Variable global para almacenar el resultado sintáctico
 resultado_sintactico = ""
 
-# Definir reglas sintácticas para el parser
-def p_inicio(p):
-    '''inicio : using_directiva namespace'''
-    p[0] = ("Inicio", p[1], p[2])
+# Definir reglas sintácticas para el parser !!!!!!
 
-def p_using_directiva(p):
-    '''using_directiva : USING IDENTIFICADOR PUNTO IDENTIFICADOR PUNTO'''
-    p[0] = ("Using", p[2], p[4])
 
-def p_namespace(p):
-    '''namespace : NAMESPACE IDENTIFICADOR LLAVEIZQ bloque LLAVEDER'''
-    p[0] = ("Namespace", p[2])
-
-def p_bloque(p):
-    '''bloque : declaracion_clase'''
-    p[0] = ("Bloque", p[1])
-
-def p_declaracion_clase(p):
-    '''declaracion_clase : CLASS IDENTIFICADOR LLAVEIZQ bloque_main LLAVEDER'''
-    p[0] = ("Clase", p[2])
-
-def p_bloque_main(p):
-    '''bloque_main : declaracion_main'''
-    p[0] = ("Bloque Main", p[1])
-
-def p_declaracion_main(p):
-    '''declaracion_main : STATIC VOID MAIN PARIZQ IDENTIFICADOR PARDER bloque_instruccion'''
-    p[0] = ("Main", p[6])
-
-def p_bloque_instruccion(p):
-    '''bloque_instruccion : LLAVEIZQ instruccion LLAVEDER'''
-    p[0] = ("Bloque Instrucción", p[2])
-
-def p_instruccion(p):
-    '''instruccion : IDENTIFICADOR PUNTO WRITE_LINE PARIZQ CADENA PARDER PUNTO'''
-    p[0] = ("Instrucción", p[5])
-
+# Error de sintaxis
 def p_error(p):
     global resultado_sintactico
     if p:
@@ -132,11 +114,11 @@ def p_error(p):
         resultado_sintactico = "Error de sintaxis en la entrada"
 
 
+
 # Configuración de PLY
 yacc.yacc(start='inicio')
 
 
-# Función para analizar sintácticamente
 # Función para analizar sintácticamente
 def analizar_sintactico(data):
     global resultado_sintactico

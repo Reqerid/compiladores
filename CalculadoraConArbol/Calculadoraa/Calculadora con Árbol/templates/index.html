@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora con Árbol</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="resultados-container">
+        <table id="resultados" border="1">
+            <thead>
+                <tr>
+                    <th>Resultados Y Operaciones</th>
+                    <th></th> <!-- Columna sin nombre -->
+                </tr>
+            </thead>
+            <tbody id="resultado-body">
+                <!-- Los resultados se llenarán aquí -->
+            </tbody>
+        </table>
+    </div>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display" disabled>
+        </div>
+        <div class="buttons" id="buttons-container"></div>
+        <button id="guardar" class="button" onclick="guardarResultado()">Guardar</button> <!-- Modificado -->
+    </div>
+    
+    <div id="tree-container" class="oculto"></div> <!-- Contenedor para el árbol -->
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script> <!-- Librería D3.js -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+</body>
+</html>

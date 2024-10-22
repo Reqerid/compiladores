@@ -1,0 +1,183 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff00ff 0%, #00ffcc 100%); /* Gradiente llamativo de fondo */
+    font-family: 'Poppins', sans-serif; /* Tipografía más moderna */
+    color: #333; /* Texto en colores oscuros para contraste */
+}
+
+.calculator {
+    width: 350px;
+    background-color: #ffffff; /* Fondo blanco brillante para la calculadora */
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    overflow: hidden;
+    border: 5px solid #00ffcc; /* Borde vibrante que resalta */
+}
+
+.display {
+    background-color: #ff66ff; /* Fondo colorido para la pantalla */
+    color: #ffffff; /* Texto blanco puro */
+    font-size: 2.5em;
+    text-align: right;
+    padding: 25px;
+    border-bottom: 5px solid #00ffcc; /* Borde entre pantalla y botones */
+}
+
+.display input {
+    width: 100%;
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-size: 2em;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px; /* Espacio entre botones */
+    padding: 15px;
+    background-color: #eeeeee; /* Fondo claro detrás de los botones */
+}
+
+.button {
+    border: none;
+    background-color: #00ccff; /* Colores más vivos para los botones */
+    color: #ffffff;
+    font-size: 1.8em;
+    padding: 15px;
+    border-radius: 15px; /* Botones redondeados */
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: #0099cc;
+    transform: scale(1.1); /* Agranda el botón al pasar el ratón */
+}
+
+.operator {
+    background-color: #ff9900; /* Color vibrante para operadores */
+    color: #ffffff;
+}
+
+.operator:hover {
+    background-color: #e68a00;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.token-table {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 320px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para la tabla */
+}
+
+.token-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.token-table th, .token-table td {
+    border: 2px solid #ff66ff; /* Borde vibrante en las celdas */
+    padding: 10px;
+    text-align: center;
+    color: #333;
+}
+
+.token-table th {
+    background-color: #ff00ff; /* Fondo brillante para encabezados */
+    color: #ffffff; /* Texto blanco en encabezados */
+}
+
+.token-table td {
+    background-color: #00ffcc; /* Fondo verde brillante para las celdas */
+    color: #000000; /* Texto en negro */
+}
+
+.oculto {
+    display: none;
+}
+
+#tree-container {
+    margin-top: 30px;
+    margin-left: 10px;
+    background-color: #ffffff; /* Fondo blanco para el contenedor del árbol */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+    border: 5px solid #ff66ff; /* Borde brillante alrededor */
+}
+
+.link {
+    stroke: #00ccff; /* Color vibrante para las líneas */
+    stroke-width: 3px;
+}
+
+.node circle {
+    fill: #ff9900; /* Color llamativo para los nodos */
+    stroke: #ffffff;
+    stroke-width: 3px;
+}
+
+.node text {
+    fill: #000000; /* Texto negro en los nodos */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#resultados-container {
+    margin: 20px; /* Espaciado alrededor de la tabla */
+    background-color: #ffffff; /* Fondo blanco para la tabla */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    padding: 20px; /* Espaciado interno */
+}
+
+#resultados {
+    width: 100%;
+    border-collapse: collapse; /* Sin espacios entre las celdas */
+}
+
+#resultados th {
+    background-color: #ff00ff; /* Fondo brillante para el encabezado */
+    color: #ffffff; /* Texto blanco en el encabezado */
+    padding: 10px; /* Espaciado interno */
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    border-bottom: 3px solid #00ccff; /* Borde inferior */
+}
+
+#resultado-body td {
+    background-color: #00ffcc; /* Fondo verde brillante para las celdas */
+    color: #000000; /* Texto negro */
+    padding: 10px; /* Espaciado interno */
+    border: 2px solid #ff66ff; /* Borde vibrante */
+    text-align: center; /* Centrar el texto */
+}
+
+#guardar {
+    background-color: #ff66ff; /* Color de fondo atractivo para el botón */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border: none; /* Sin borde */
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 1.2em; /* Tamaño de fuente del botón */
+    cursor: pointer; /* Cambiar cursor a puntero */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+#guardar:hover {
+    background-color: #ff33ff; /* Color de fondo al pasar el ratón */
+    transform: scale(1.05); /* Agrandar un poco el botón */
+}
+
