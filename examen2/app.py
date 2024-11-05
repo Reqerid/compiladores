@@ -6,9 +6,6 @@ app = Flask(__name__)
 
 # Definición de tokens
 tokens = (
-    'USING', 'NAMESPACE', 'CLASS', 'STATIC', 'VOID', 'MAIN', 
-    'PARIZQ', 'PARDER','STRING', 'LLAVEIZQ', 'LLAVEDER', 'PUNTO', 
-    'CADENA', 'IDENTIFICADOR', 'SYSTEM', 'CONSOLE','WRITE_LINE'
 
 )
 
@@ -22,54 +19,15 @@ t_PUNTOCOMA = r';'
 t_CORCHETEIZQ = r'\['
 t_CORCHETEDER = r'\]'
 
-
-
-
 # Definir comillas para cadenas
 
 # Definir palabras reservadas
-def t_WRITE_LINE(t):
-    r'WriteLine'
-    return t
-def t_STRING(t):
-    r'\bstring\b'
-def t_CONSOLE(t):
-    r'\bConsole\b'
 
-def t_SYSTEM(t):
-    r'\bSystem\b'
-
-def t_USING(t):
-    r'\busing\b'
-    return t
-
-def t_NAMESPACE(t):
-    r'\bnamespace\b'
-    return t
-
-def t_CLASS(t):
-    r'\bclass\b'
-    return t
-
-def t_STATIC(t):
-    r'\bstatic\b'
-    return t
-
-def t_VOID(t):
-    r'\bvoid\b'
-    return t
-
-def t_MAIN(t):
-    r'\bMain\b'
-    return t
 
 
 
 # Definir identificadores
 t_IDENTIFICADOR = r'[a-zA-Z_][a-zA-Z_0-9]*'
-
-# Definir cadenas
-t_CADENA = r'\".*?\"'
 
 # Manejo de nuevas líneas
 def t_newline(t):
