@@ -1,0 +1,500 @@
+/* Paleta de colores */
+:root {
+    --color-darkest: #06141B;
+    --color-darker: #11212D;
+    --color-dark: #253745;
+    --color-medium: #4A5C6A;
+    --color-light: #9BA8AB;
+    --color-lightest: #CCD0CF;
+}
+
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-darkest);
+    color: var(--color-lightest);
+    display: flex;
+    justify-content: flex-start; /* Alinea el contenido desde la parte superior */
+    align-items: center;
+    height: 100%; /* Usa el 100% de la altura disponible */
+    flex-direction: column;
+ /* Permite el desplazamiento vertical */
+    width: 100%;
+    padding-top: 50px; /* Agrega un espaciado superior */
+    padding-bottom: 50px;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, var(--color-darkest), var(--color-darker), var(--color-dark), var(--color-medium), var(--color-light), var(--color-lightest));
+    background-size: 300% 300%;
+    animation: backgroundAnimation 10s ease infinite;
+    position: relative; /* Necesario para posicionar el logo en la parte superior derecha */
+    
+
+}
+
+/* Animación de cambio de fondo */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Animación de olas */
+@keyframes waveAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px); /* Mueve el logo hacia abajo para simular la ola */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para el logo de MySQL */
+#mysqlLogo {
+    position: absolute; /* Lo posicionamos en la parte superior derecha */
+    top: 10px; /* Distancia del borde superior */
+    right: 10px; /* Distancia del borde derecho */
+    width: 50px; /* Ajusta el tamaño del logo */
+    animation: waveAnimation 2s ease-in-out infinite; /* Animación de olas */
+    
+
+}
+
+/* Encabezado */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: var(--color-lightest);
+    font-size: 2em;
+    margin: 0;
+}
+
+.header p {
+    color: var(--color-lightest);
+    font-size: 1em;
+}
+
+/* Sección de métricas */
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.metric-card {
+    flex: 1;
+    background-color: var(--color-dark);
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.metric-card h2 {
+    font-size: 1.5em;
+    color: var(--color-lightest);
+}
+
+.metric-card p {
+    color: var(--color-lightest);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Efecto hover */
+.metric-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--color-medium);
+}
+
+
+/************************/
+
+/* Estilos para el formulario de SQL */
+.formulariosql {
+    width: 100%;
+    max-width: 800px; /* Limita el ancho del formulario */
+    background-color: var(--color-dark); /* Color de fondo oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px auto; /* Centra el formulario */
+    color: var(--color-lightest); /* Color del texto */
+    font-family: Arial, sans-serif;
+    border-radius: 30   px;
+    
+}
+
+/* Título del formulario */
+.formulariosql h2 {
+    color: var(--color-lightest); /* Color claro para el título */
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el área de texto */
+.formulariosql textarea {
+    text-align:left;
+    
+    width: 97%;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid var(--color-medium); /* Borde sutil con color intermedio */
+    background-color: var(--color-darkest);
+    color: var(--color-lightest); /* Texto en color claro */
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* Botón del formulario */
+.formulariosql button {
+    width: 30%;
+    padding: 12px;
+    background-color: var(--color-medium); /* Color de fondo para el botón */
+    color: var(--color-lightest); /* Texto en color claro */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave en el color de fondo */
+    
+}
+
+/* Efecto hover para el botón */
+.formulariosql button:hover {
+    background-color: var(--color-light); /* Color más claro cuando el botón es hovered */
+}
+
+/* Agregar un poco de espaciado entre el formulario y el contenido debajo */
+.formulariosql form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center; /* Centra los botones en el contenedor */
+}
+
+.botonesformulariosql{
+    display: flex;
+    flex-direction: row;
+    justify-content: center ;
+    gap: 20px;
+    position: relative;
+}
+
+/* Animación de texto para el título del formulario */
+.formulariosql h2 {
+    color: transparent; /* Hace el color del texto transparente */
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--color-lightest), #c487c1); /* Gradiente de lightest a dorado */
+    background-size: 300% 300%; /* Configura el fondo para animación */
+    animation: textBackgroundAnimation 10s ease infinite; /* Aplica la animación al texto */
+    -webkit-background-clip: text; /* Hace que el fondo del texto sea visible */
+    background-clip: text; /* Para todos los navegadores modernos */
+}
+
+/* Animación de cambio de fondo para el texto */
+@keyframes textBackgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/*................INFORMACIÓN...............*/
+/* Nueva paleta de colores para el div información */
+:root {
+    --color-info-darkest: #00141f;
+    --color-info-darker: #2d1123;
+    --color-info-dark: #3d2461;
+    --color-info-medium: #61318a;
+    --color-info-light: #8c5f9f;
+    --color-info-lightest: #c487c1;
+}
+
+/* Estilos para el div de información */
+.informacion {
+    max-width: 800px;
+    background-color: var(--color-darker);
+    color: var(--color-info-lightest);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    font-family: Arial, sans-serif;
+    position: absolute;
+    bottom: -25%;
+    left: 51%;
+    max-height: 400px;
+    height: 400px;
+    width: 400px;
+    z-index: 1000; /* Asegura que se muestre sobre otros elementos */
+    display: none;
+}
+
+/* Estilo para el encabezado de la ventana */
+.informacion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    background-color: var(--color-darkest); /* Fondo de encabezado */
+    padding: 10px;
+    border-radius: 8px; /* Bordes redondeados en la parte superior */
+    height: 40px; /* Ajustar altura del encabezado */
+    width: 95%;
+    color: var(--color-info-lightest);
+    font-size: 1.1em; /* Título más grande */
+    font-weight: bold;
+}
+
+/* Título dentro del encabezado con animación */
+.informacion-header h2 {
+    margin: 0;
+    padding: 0;
+    color: transparent; /* Hace que el color del texto sea transparente */
+    font-size: 1.4em; /* Título más grande */
+    text-align: center;
+    background: linear-gradient(45deg, var(--color-lightest),var(--color-light),var(--color-info-light), var(--color-medium)); /* Gradiente con todos los colores de la paleta */
+    background-size: 300% 300%; /* Configura el fondo para la animación */
+    animation: textBackgroundAnimation 10s ease infinite; /* Aplica la animación de fondo */
+    -webkit-background-clip: text; /* Hace que el fondo del texto sea visible */
+    background-clip: text; /* Para todos los navegadores modernos */
+}
+
+/* Animación para el cambio de fondo del texto */
+@keyframes textBackgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Botón de cerrar X */
+.close-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-info-lightest);
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover para el botón de cerrar */
+.close-btn:hover {
+    color: var(--color-info-light);
+    border-radius: 50%;
+}
+
+/* Texto y detalles */
+.informacion p {
+    color: var(--color-light); /* Color de texto más oscuro */
+    font-size: 1em;
+}
+
+.informacion:hover {
+    background-color: var(--color-info-darkest); /* Fondo morado más oscuro */
+}
+
+
+/*...................HISTORIAL................*/
+
+/* Estilos para el div de información */
+.historial {
+    max-width: 800px;
+    background-color: var(--color-darker);
+    color: var(--color-info-lightest);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    font-family: Arial, sans-serif;
+    position: absolute;
+    bottom: -25%;
+    left: 61%;
+    max-height: 400px;
+    height: 400px;
+    width: 400px;
+    display:none;
+    z-index: 1000; /* Asegura que se muestre sobre otros elementos */
+}
+
+/* Estilo para el encabezado de la ventana */
+.historial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    background-color: var(--color-darkest); /* Fondo de encabezado */
+    padding: 10px;
+    border-radius: 8px; /* Bordes redondeados en la parte superior */
+    height: 40px; /* Ajustar altura del encabezado */
+    width: 95%;
+    color: var(--color-info-lightest);
+    font-size: 1.1em; /* Título más grande */
+    font-weight: bold;
+}
+
+/* Título dentro del encabezado con animación */
+.historial-header h2 {
+    margin: 0;
+    padding: 0;
+    color: transparent; /* Hace que el color del texto sea transparente */
+    font-size: 1.4em; /* Título más grande */
+    text-align: center;
+    background: linear-gradient(45deg, var(--color-lightest),var(--color-light),var(--color-info-light), var(--color-medium)); /* Gradiente con todos los colores de la paleta */
+    background-size: 300% 300%; /* Configura el fondo para la animación */
+    animation: textBackgroundAnimation 10s ease infinite; /* Aplica la animación de fondo */
+    -webkit-background-clip: text; /* Hace que el fondo del texto sea visible */
+    background-clip: text; /* Para todos los navegadores modernos */
+}
+
+/* Animación para el cambio de fondo del texto */
+@keyframes textBackgroundAnimation2 {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 0%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Botón de cerrar X */
+.close-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color-info-lightest);
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover para el botón de cerrar */
+.close-btn:hover {
+    color: var(--color-info-light);
+    border-radius: 50%;
+}
+
+/* Texto y detalles */
+.historial p {
+    color: var(--color-light); /* Color de texto más oscuro */
+    font-size: 1em;
+}
+
+.historial:hover {
+    background-color: var(--color-info-darkest); /* Fondo morado más oscuro */
+}
+
+/*...................CONSULTA........................*/
+.consulta {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--color-darker); /* Fondo oscuro */
+    color: var(--color-lightest); /* Texto claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra suave para darle profundidad */
+    max-width: 100%;
+}
+
+/* Contenedor de la tabla */
+.table-container {
+    max-width: 100px; /* Limita la anchura de la tabla al 100% del contenedor */
+    overflow-x: auto; /* Barra de desplazamiento horizontal */
+    margin-top: 10px;
+}
+
+/* Estilo para las tablas dentro del div consulta */
+.table-container table {
+    width: 100%; /* La tabla toma el 100% del ancho disponible del contenedor */
+    max-width: 800px; /* Ajusta este valor para limitar el ancho de la tabla */
+    border-collapse: collapse;
+}
+
+/* Estilos de celdas y filas */
+.consulta th, .consulta td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid var(--color-medium); /* Borde suave de color medio */
+}
+
+.consulta th {
+    background-color: var(--color-dark); /* Fondo oscuro para el encabezado */
+    color: var(--color-lightest); /* Texto claro para los encabezados */
+}
+
+.consulta tr:nth-child(even) {
+    background-color: var(--color-dark); /* Fondo oscuro para filas pares */
+}
+
+.consulta tr:nth-child(odd) {
+    background-color: var(--color-medium); /* Fondo más claro para filas impares */
+}
+
+.consulta tr:hover {
+    background-color: var(--color-light); /* Resaltar en un color claro cuando se pase el mouse */
+}
+
