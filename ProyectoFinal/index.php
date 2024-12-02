@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNACH</title>
+    <title>Analizador MySql</title>
     <link rel="stylesheet" href="Vistas/src/index.css"> <!-- Archivo CSS externo -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="Vistas2/media/unach.png"></link>
 </head>
 <body>
 
@@ -31,7 +32,7 @@
                 $("#loadingScreen").fadeOut("slow", function() {
                     $("#mainContent").fadeIn("slow");
                     setTimeout(function() {
-                        window.location.href = "Vistas/analisis.php"; // Cambia "vista.php" por la ruta de tu vista
+                        window.location.href = "Vistas2/analisis2.php"; // Cambia "vista.php" por la ruta de tu vista
                     }, 2000);
                 });
             }, 3500); // Ajusta el tiempo de carga según tus necesidades

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ADD ALTER AUTO_INCREMENT COLUMN COMMA CREATE DELETE DESCRIBE DROP EQUALS FROM ID INSERT INT INTO KEY LPAREN MODIFY NUMBER PRIMARY RPAREN SELECT SEMICOLON SET SHOW STAR STRING TABLE TABLES TRUNCATE UPDATE USE VALUES VARCHAR WHEREstatement : select_statement\n                 | insert_statement\n                 | delete_statement\n                 | update_statement\n                 | create_table_statement\n                 | drop_table_statement\n                 | alter_table_statement\n                 | truncate_statement\n                 | show_tables_statement\n                 | describe_statement\n                 | use_statementselect_statement : SELECT column_list FROM ID where_clause SEMICOLON\n                        | SELECT STAR FROM ID where_clause SEMICOLONinsert_statement : INSERT INTO ID LPAREN column_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON\n                        | INSERT INTO ID VALUES LPAREN value_list RPAREN SEMICOLONdelete_statement : DELETE FROM ID where_clause SEMICOLONupdate_statement : UPDATE ID SET update_list where_clause SEMICOLONcreate_table_statement : CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLONdrop_table_statement : DROP TABLE ID SEMICOLONalter_table_statement : ALTER TABLE ID ADD COLUMN column_definition SEMICOLON\n                             | ALTER TABLE ID MODIFY COLUMN column_definition SEMICOLONtruncate_statement : TRUNCATE TABLE ID SEMICOLONshow_tables_statement : SHOW TABLES SEMICOLONdescribe_statement : DESCRIBE ID SEMICOLONuse_statement : USE ID SEMICOLONcolumn_list : ID\n                   | column_list COMMA IDvalue_list : value\n                  | value_list COMMA valuevalue : NUMBER\n             | STRING\n             | IDwhere_clause : WHERE condition\n                    | condition : ID EQUALS valueupdate_list : ID EQUALS value\n                   | update_list COMMA ID EQUALS valuecolumn_definitions : column_definition\n                          | column_definitions COMMA column_definitioncolumn_definition : ID data_type\n                         | ID data_type column_constraints\n                         | ID VARCHAR LPAREN NUMBER RPAREN\n                         | ID VARCHAR LPAREN NUMBER RPAREN column_constraintsdata_type : INT\n                 | VARCHARcolumn_constraints : column_constraint\n                          | column_constraints column_constraintcolumn_constraint : AUTO_INCREMENT\n                         | PRIMARY KEY'
+_lr_signature = 'ADD ALTER AUTO_INCREMENT COLUMN COMMA CREATE DATABASE DELETE DESCRIBE DROP EQUALS FROM ID INSERT INT INTO KEY LPAREN MODIFY NUMBER PRIMARY RPAREN SELECT SEMICOLON SET SHOW STAR STRING TABLE TABLES TRUNCATE UPDATE USE VALUES VARCHAR WHEREstatement : select_statement\n                 | insert_statement\n                 | delete_statement\n                 | update_statement\n                 | create_table_statement\n                 | create_database_statement\n                 | drop_table_statement\n                 | drop_database_statement\n                 | alter_table_statement\n                 | truncate_statement\n                 | show_tables_statement\n                 | describe_statement\n                 | use_statementselect_statement : SELECT column_list FROM ID where_clause SEMICOLON\n                        | SELECT STAR FROM ID where_clause SEMICOLONinsert_statement : INSERT INTO ID LPAREN column_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON\n                        | INSERT INTO ID VALUES LPAREN value_list RPAREN SEMICOLONdelete_statement : DELETE FROM ID where_clause SEMICOLONupdate_statement : UPDATE ID SET update_list where_clause SEMICOLONcreate_database_statement : CREATE DATABASE ID SEMICOLONcreate_table_statement : CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLONdrop_table_statement : DROP TABLE ID SEMICOLONdrop_database_statement : DROP DATABASE ID SEMICOLONalter_table_statement : ALTER TABLE ID ADD COLUMN column_definition SEMICOLON\n                             | ALTER TABLE ID MODIFY COLUMN column_definition SEMICOLONtruncate_statement : TRUNCATE TABLE ID SEMICOLONshow_tables_statement : SHOW TABLES SEMICOLONdescribe_statement : DESCRIBE ID SEMICOLONuse_statement : USE ID SEMICOLONcolumn_list : ID\n                   | column_list COMMA IDvalue_list : value\n                  | value_list COMMA valuevalue : NUMBER\n             | STRING\n             | IDwhere_clause : WHERE condition\n                    | condition : ID EQUALS valueupdate_list : ID EQUALS value\n                   | update_list COMMA ID EQUALS valuecolumn_definitions : column_definition\n                          | column_definitions COMMA column_definitioncolumn_definition : ID data_type\n                         | ID data_type column_constraints\n                         | ID VARCHAR LPAREN NUMBER RPAREN\n                         | ID VARCHAR LPAREN NUMBER RPAREN column_constraintsdata_type : INT\n                 | VARCHARcolumn_constraints : column_constraint\n                          | column_constraints column_constraintcolumn_constraint : AUTO_INCREMENT\n                         | PRIMARY KEY'
     
-_lr_action_items = {'SELECT':([0,],[13,]),'INSERT':([0,],[14,]),'DELETE':([0,],[15,]),'UPDATE':([0,],[16,]),'CREATE':([0,],[17,]),'DROP':([0,],[18,]),'ALTER':([0,],[19,]),'TRUNCATE':([0,],[20,]),'SHOW':([0,],[21,]),'DESCRIBE':([0,],[22,]),'USE':([0,],[23,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,47,48,49,60,63,68,79,80,89,108,110,111,113,123,],[0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-23,-24,-25,-19,-22,-16,-12,-13,-17,-18,-20,-21,-15,-14,]),'STAR':([13,],[26,]),'ID':([13,16,22,23,27,28,30,31,32,33,37,38,39,42,53,56,59,67,71,73,77,78,87,95,100,102,112,],[25,29,35,36,40,41,43,44,45,46,50,51,52,57,25,70,74,82,82,90,74,74,82,74,82,82,82,]),'INTO':([14,],[27,]),'FROM':([15,24,25,26,51,],[28,37,-26,39,-27,]),'TABLE':([17,18,19,20,],[30,31,32,33,]),'TABLES':([21,],[34,]),'COMMA':([24,25,51,58,66,75,76,82,83,84,85,86,88,91,92,93,103,104,105,109,114,115,116,117,119,120,122,],[38,-26,-27,73,38,95,-38,-32,100,-28,-30,-31,-36,-40,-45,-44,-41,-46,-48,-39,-29,-37,-47,-49,100,-42,-43,]),'RPAREN':([25,51,66,75,76,82,83,84,85,86,91,92,93,103,104,105,109,114,116,117,118,119,120,122,],[-26,-27,81,94,-38,-32,99,-28,-30,-31,-40,-45,-44,-41,-46,-48,-39,-29,-47,-49,120,121,-42,-43,]),'SET':([29,],[42,]),'SEMICOLON':([34,35,36,41,44,46,50,52,55,58,64,65,69,72,82,85,86,88,91,92,93,94,96,97,99,101,103,104,105,115,116,117,120,121,122,],[47,48,49,-34,60,63,-34,-34,68,-34,79,80,-33,89,-32,-30,-31,-36,-40,-45,-44,108,110,111,113,-35,-41,-46,-48,-37,-47,-49,-42,123,-43,]),'LPAREN':([40,43,54,92,98,],[53,59,67,107,112,]),'VALUES':([40,81,],[54,98,]),'WHERE':([41,50,52,58,82,85,86,88,115,],[56,56,56,56,-32,-30,-31,-36,-37,]),'ADD':([45,],[61,]),'MODIFY':([45,],[62,]),'EQUALS':([57,70,90,],[71,87,102,]),'COLUMN':([61,62,],[77,78,]),'NUMBER':([67,71,87,100,102,107,112,],[85,85,85,85,85,118,85,]),'STRING':([67,71,87,100,102,112,],[86,86,86,86,86,86,]),'VARCHAR':([74,],[92,]),'INT':([74,],[93,]),'AUTO_INCREMENT':([91,92,93,103,104,105,116,117,120,122,],[105,-45,-44,105,-46,-48,-47,-49,105,105,]),'PRIMARY':([91,92,93,103,104,105,116,117,120,122,],[106,-45,-44,106,-46,-48,-47,-49,106,106,]),'KEY':([106,],[117,]),}
+_lr_action_items = {'SELECT':([0,],[15,]),'INSERT':([0,],[16,]),'DELETE':([0,],[17,]),'UPDATE':([0,],[18,]),'CREATE':([0,],[19,]),'DROP':([0,],[20,]),'ALTER':([0,],[21,]),'TRUNCATE':([0,],[22,]),'SHOW':([0,],[23,]),'DESCRIBE':([0,],[24,]),'USE':([0,],[25,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,53,54,55,66,67,68,71,76,87,88,97,116,118,119,121,131,],[0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-27,-28,-29,-20,-22,-23,-26,-18,-14,-15,-19,-21,-24,-25,-17,-16,]),'STAR':([15,],[28,]),'ID':([15,18,24,25,29,30,32,33,34,35,36,37,41,42,43,46,59,62,65,75,79,81,85,86,95,103,108,110,120,],[27,31,39,40,44,45,47,48,49,50,51,52,56,57,58,63,27,78,82,90,90,98,82,82,90,82,90,90,90,]),'INTO':([16,],[29,]),'FROM':([17,26,27,28,57,],[30,41,-30,43,-31,]),'TABLE':([19,20,21,22,],[32,34,36,37,]),'DATABASE':([19,20,],[33,35,]),'TABLES':([23,],[38,]),'COMMA':([26,27,57,64,74,83,84,90,91,92,93,94,96,99,100,101,111,112,113,117,122,123,124,125,127,128,130,],[42,-30,-31,81,42,103,-42,-36,108,-32,-34,-35,-40,-44,-49,-48,-45,-50,-52,-43,-33,-41,-51,-53,108,-46,-47,]),'RPAREN':([27,57,74,83,84,90,91,92,93,94,99,100,101,111,112,113,117,122,124,125,126,127,128,130,],[-30,-31,89,102,-42,-36,107,-32,-34,-35,-44,-49,-48,-45,-50,-52,-43,-33,-51,-53,128,129,-46,-47,]),'SET':([31,],[46,]),'SEMICOLON':([38,39,40,45,48,49,50,52,56,58,61,64,72,73,77,80,90,93,94,96,99,100,101,102,104,105,107,109,111,112,113,123,124,125,128,129,130,],[53,54,55,-38,66,67,68,71,-38,-38,76,-38,87,88,-37,97,-36,-34,-35,-40,-44,-49,-48,116,118,119,121,-39,-45,-50,-52,-41,-51,-53,-46,131,-47,]),'LPAREN':([44,47,60,100,106,],[59,65,75,115,120,]),'VALUES':([44,89,],[60,106,]),'WHERE':([45,56,58,64,90,93,94,96,123,],[62,62,62,62,-36,-34,-35,-40,-41,]),'ADD':([51,],[69,]),'MODIFY':([51,],[70,]),'EQUALS':([63,78,98,],[79,95,110,]),'COLUMN':([69,70,],[85,86,]),'NUMBER':([75,79,95,108,110,115,120,],[93,93,93,93,93,126,93,]),'STRING':([75,79,95,108,110,120,],[94,94,94,94,94,94,]),'VARCHAR':([82,],[100,]),'INT':([82,],[101,]),'AUTO_INCREMENT':([99,100,101,111,112,113,124,125,128,130,],[113,-49,-48,113,-50,-52,-51,-53,113,113,]),'PRIMARY':([99,100,101,111,112,113,124,125,128,130,],[114,-49,-48,114,-50,-52,-51,-53,114,114,]),'KEY':([114,],[125,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'select_statement':([0,],[2,]),'insert_statement':([0,],[3,]),'delete_statement':([0,],[4,]),'update_statement':([0,],[5,]),'create_table_statement':([0,],[6,]),'drop_table_statement':([0,],[7,]),'alter_table_statement':([0,],[8,]),'truncate_statement':([0,],[9,]),'show_tables_statement':([0,],[10,]),'describe_statement':([0,],[11,]),'use_statement':([0,],[12,]),'column_list':([13,53,],[24,66,]),'where_clause':([41,50,52,58,],[55,64,65,72,]),'update_list':([42,],[58,]),'condition':([56,],[69,]),'column_definitions':([59,],[75,]),'column_definition':([59,77,78,95,],[76,96,97,109,]),'value_list':([67,112,],[83,119,]),'value':([67,71,87,100,102,112,],[84,88,101,114,115,84,]),'data_type':([74,],[91,]),'column_constraints':([91,120,],[103,122,]),'column_constraint':([91,103,120,122,],[104,116,104,116,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'select_statement':([0,],[2,]),'insert_statement':([0,],[3,]),'delete_statement':([0,],[4,]),'update_statement':([0,],[5,]),'create_table_statement':([0,],[6,]),'create_database_statement':([0,],[7,]),'drop_table_statement':([0,],[8,]),'drop_database_statement':([0,],[9,]),'alter_table_statement':([0,],[10,]),'truncate_statement':([0,],[11,]),'show_tables_statement':([0,],[12,]),'describe_statement':([0,],[13,]),'use_statement':([0,],[14,]),'column_list':([15,59,],[26,74,]),'where_clause':([45,56,58,64,],[61,72,73,80,]),'update_list':([46,],[64,]),'condition':([62,],[77,]),'column_definitions':([65,],[83,]),'column_definition':([65,85,86,103,],[84,104,105,117,]),'value_list':([75,120,],[91,127,]),'value':([75,79,95,108,110,120,],[92,96,109,122,123,92,]),'data_type':([82,],[99,]),'column_constraints':([99,128,],[111,130,]),'column_constraint':([99,111,128,130,],[112,124,112,124,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,53 +27,57 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> select_statement','statement',1,'p_statement','app.py',73),
-  ('statement -> insert_statement','statement',1,'p_statement','app.py',74),
-  ('statement -> delete_statement','statement',1,'p_statement','app.py',75),
-  ('statement -> update_statement','statement',1,'p_statement','app.py',76),
-  ('statement -> create_table_statement','statement',1,'p_statement','app.py',77),
-  ('statement -> drop_table_statement','statement',1,'p_statement','app.py',78),
-  ('statement -> alter_table_statement','statement',1,'p_statement','app.py',79),
-  ('statement -> truncate_statement','statement',1,'p_statement','app.py',80),
-  ('statement -> show_tables_statement','statement',1,'p_statement','app.py',81),
-  ('statement -> describe_statement','statement',1,'p_statement','app.py',82),
-  ('statement -> use_statement','statement',1,'p_statement','app.py',83),
-  ('select_statement -> SELECT column_list FROM ID where_clause SEMICOLON','select_statement',6,'p_select_statement','app.py',87),
-  ('select_statement -> SELECT STAR FROM ID where_clause SEMICOLON','select_statement',6,'p_select_statement','app.py',88),
-  ('insert_statement -> INSERT INTO ID LPAREN column_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON','insert_statement',11,'p_insert_statement','app.py',92),
-  ('insert_statement -> INSERT INTO ID VALUES LPAREN value_list RPAREN SEMICOLON','insert_statement',8,'p_insert_statement','app.py',93),
-  ('delete_statement -> DELETE FROM ID where_clause SEMICOLON','delete_statement',5,'p_delete_statement','app.py',97),
-  ('update_statement -> UPDATE ID SET update_list where_clause SEMICOLON','update_statement',6,'p_update_statement','app.py',101),
-  ('create_table_statement -> CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON','create_table_statement',7,'p_create_table_statement','app.py',105),
-  ('drop_table_statement -> DROP TABLE ID SEMICOLON','drop_table_statement',4,'p_drop_table_statement','app.py',109),
-  ('alter_table_statement -> ALTER TABLE ID ADD COLUMN column_definition SEMICOLON','alter_table_statement',7,'p_alter_table_statement','app.py',113),
-  ('alter_table_statement -> ALTER TABLE ID MODIFY COLUMN column_definition SEMICOLON','alter_table_statement',7,'p_alter_table_statement','app.py',114),
-  ('truncate_statement -> TRUNCATE TABLE ID SEMICOLON','truncate_statement',4,'p_truncate_statement','app.py',118),
-  ('show_tables_statement -> SHOW TABLES SEMICOLON','show_tables_statement',3,'p_show_tables_statement','app.py',122),
-  ('describe_statement -> DESCRIBE ID SEMICOLON','describe_statement',3,'p_describe_statement','app.py',126),
-  ('use_statement -> USE ID SEMICOLON','use_statement',3,'p_use_statement','app.py',130),
-  ('column_list -> ID','column_list',1,'p_column_list','app.py',134),
-  ('column_list -> column_list COMMA ID','column_list',3,'p_column_list','app.py',135),
-  ('value_list -> value','value_list',1,'p_value_list','app.py',139),
-  ('value_list -> value_list COMMA value','value_list',3,'p_value_list','app.py',140),
-  ('value -> NUMBER','value',1,'p_value','app.py',144),
-  ('value -> STRING','value',1,'p_value','app.py',145),
-  ('value -> ID','value',1,'p_value','app.py',146),
-  ('where_clause -> WHERE condition','where_clause',2,'p_where_clause','app.py',150),
-  ('where_clause -> <empty>','where_clause',0,'p_where_clause','app.py',151),
-  ('condition -> ID EQUALS value','condition',3,'p_condition','app.py',155),
-  ('update_list -> ID EQUALS value','update_list',3,'p_update_list','app.py',159),
-  ('update_list -> update_list COMMA ID EQUALS value','update_list',5,'p_update_list','app.py',160),
-  ('column_definitions -> column_definition','column_definitions',1,'p_column_definitions','app.py',164),
-  ('column_definitions -> column_definitions COMMA column_definition','column_definitions',3,'p_column_definitions','app.py',165),
-  ('column_definition -> ID data_type','column_definition',2,'p_column_definition','app.py',169),
-  ('column_definition -> ID data_type column_constraints','column_definition',3,'p_column_definition','app.py',170),
-  ('column_definition -> ID VARCHAR LPAREN NUMBER RPAREN','column_definition',5,'p_column_definition','app.py',171),
-  ('column_definition -> ID VARCHAR LPAREN NUMBER RPAREN column_constraints','column_definition',6,'p_column_definition','app.py',172),
-  ('data_type -> INT','data_type',1,'p_data_type','app.py',183),
-  ('data_type -> VARCHAR','data_type',1,'p_data_type','app.py',184),
-  ('column_constraints -> column_constraint','column_constraints',1,'p_column_constraints','app.py',188),
-  ('column_constraints -> column_constraints column_constraint','column_constraints',2,'p_column_constraints','app.py',189),
-  ('column_constraint -> AUTO_INCREMENT','column_constraint',1,'p_column_constraint','app.py',193),
-  ('column_constraint -> PRIMARY KEY','column_constraint',2,'p_column_constraint','app.py',194),
+  ('statement -> select_statement','statement',1,'p_statement','MSV4.py',79),
+  ('statement -> insert_statement','statement',1,'p_statement','MSV4.py',80),
+  ('statement -> delete_statement','statement',1,'p_statement','MSV4.py',81),
+  ('statement -> update_statement','statement',1,'p_statement','MSV4.py',82),
+  ('statement -> create_table_statement','statement',1,'p_statement','MSV4.py',83),
+  ('statement -> create_database_statement','statement',1,'p_statement','MSV4.py',84),
+  ('statement -> drop_table_statement','statement',1,'p_statement','MSV4.py',85),
+  ('statement -> drop_database_statement','statement',1,'p_statement','MSV4.py',86),
+  ('statement -> alter_table_statement','statement',1,'p_statement','MSV4.py',87),
+  ('statement -> truncate_statement','statement',1,'p_statement','MSV4.py',88),
+  ('statement -> show_tables_statement','statement',1,'p_statement','MSV4.py',89),
+  ('statement -> describe_statement','statement',1,'p_statement','MSV4.py',90),
+  ('statement -> use_statement','statement',1,'p_statement','MSV4.py',91),
+  ('select_statement -> SELECT column_list FROM ID where_clause SEMICOLON','select_statement',6,'p_select_statement','MSV4.py',95),
+  ('select_statement -> SELECT STAR FROM ID where_clause SEMICOLON','select_statement',6,'p_select_statement','MSV4.py',96),
+  ('insert_statement -> INSERT INTO ID LPAREN column_list RPAREN VALUES LPAREN value_list RPAREN SEMICOLON','insert_statement',11,'p_insert_statement','MSV4.py',100),
+  ('insert_statement -> INSERT INTO ID VALUES LPAREN value_list RPAREN SEMICOLON','insert_statement',8,'p_insert_statement','MSV4.py',101),
+  ('delete_statement -> DELETE FROM ID where_clause SEMICOLON','delete_statement',5,'p_delete_statement','MSV4.py',105),
+  ('update_statement -> UPDATE ID SET update_list where_clause SEMICOLON','update_statement',6,'p_update_statement','MSV4.py',109),
+  ('create_database_statement -> CREATE DATABASE ID SEMICOLON','create_database_statement',4,'p_create_database_statement','MSV4.py',113),
+  ('create_table_statement -> CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON','create_table_statement',7,'p_create_table_statement','MSV4.py',117),
+  ('drop_table_statement -> DROP TABLE ID SEMICOLON','drop_table_statement',4,'p_drop_table_statement','MSV4.py',121),
+  ('drop_database_statement -> DROP DATABASE ID SEMICOLON','drop_database_statement',4,'p_drop_database_statement','MSV4.py',125),
+  ('alter_table_statement -> ALTER TABLE ID ADD COLUMN column_definition SEMICOLON','alter_table_statement',7,'p_alter_table_statement','MSV4.py',129),
+  ('alter_table_statement -> ALTER TABLE ID MODIFY COLUMN column_definition SEMICOLON','alter_table_statement',7,'p_alter_table_statement','MSV4.py',130),
+  ('truncate_statement -> TRUNCATE TABLE ID SEMICOLON','truncate_statement',4,'p_truncate_statement','MSV4.py',134),
+  ('show_tables_statement -> SHOW TABLES SEMICOLON','show_tables_statement',3,'p_show_tables_statement','MSV4.py',138),
+  ('describe_statement -> DESCRIBE ID SEMICOLON','describe_statement',3,'p_describe_statement','MSV4.py',142),
+  ('use_statement -> USE ID SEMICOLON','use_statement',3,'p_use_statement','MSV4.py',146),
+  ('column_list -> ID','column_list',1,'p_column_list','MSV4.py',150),
+  ('column_list -> column_list COMMA ID','column_list',3,'p_column_list','MSV4.py',151),
+  ('value_list -> value','value_list',1,'p_value_list','MSV4.py',155),
+  ('value_list -> value_list COMMA value','value_list',3,'p_value_list','MSV4.py',156),
+  ('value -> NUMBER','value',1,'p_value','MSV4.py',160),
+  ('value -> STRING','value',1,'p_value','MSV4.py',161),
+  ('value -> ID','value',1,'p_value','MSV4.py',162),
+  ('where_clause -> WHERE condition','where_clause',2,'p_where_clause','MSV4.py',166),
+  ('where_clause -> <empty>','where_clause',0,'p_where_clause','MSV4.py',167),
+  ('condition -> ID EQUALS value','condition',3,'p_condition','MSV4.py',171),
+  ('update_list -> ID EQUALS value','update_list',3,'p_update_list','MSV4.py',175),
+  ('update_list -> update_list COMMA ID EQUALS value','update_list',5,'p_update_list','MSV4.py',176),
+  ('column_definitions -> column_definition','column_definitions',1,'p_column_definitions','MSV4.py',180),
+  ('column_definitions -> column_definitions COMMA column_definition','column_definitions',3,'p_column_definitions','MSV4.py',181),
+  ('column_definition -> ID data_type','column_definition',2,'p_column_definition','MSV4.py',185),
+  ('column_definition -> ID data_type column_constraints','column_definition',3,'p_column_definition','MSV4.py',186),
+  ('column_definition -> ID VARCHAR LPAREN NUMBER RPAREN','column_definition',5,'p_column_definition','MSV4.py',187),
+  ('column_definition -> ID VARCHAR LPAREN NUMBER RPAREN column_constraints','column_definition',6,'p_column_definition','MSV4.py',188),
+  ('data_type -> INT','data_type',1,'p_data_type','MSV4.py',199),
+  ('data_type -> VARCHAR','data_type',1,'p_data_type','MSV4.py',200),
+  ('column_constraints -> column_constraint','column_constraints',1,'p_column_constraints','MSV4.py',204),
+  ('column_constraints -> column_constraints column_constraint','column_constraints',2,'p_column_constraints','MSV4.py',205),
+  ('column_constraint -> AUTO_INCREMENT','column_constraint',1,'p_column_constraint','MSV4.py',209),
+  ('column_constraint -> PRIMARY KEY','column_constraint',2,'p_column_constraint','MSV4.py',210),
 ]

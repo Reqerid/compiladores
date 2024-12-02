@@ -1,0 +1,1026 @@
+:root {
+    --color-amarillo: #FFBA00;
+    --color-cafe: #BB8A52;
+    --color-verdeOscuro: #0C3B2E;
+    --color-verdeClaro: #6d9773;
+    --color-verdeMedio: #4b8f6a;
+    --color-verdeBrillante: #8ecf95;
+    --color-negroOscuro: #010f17;
+}
+
+/* Reinicio de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#mi-componente {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Altura reducida para un diseño más minimalista */
+    background-color: rgba(28, 28, 28, 0.9); /* Fondo con transparencia */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+}
+
+.iconos-izquierda {
+    display: flex;
+    gap: 15px;
+}
+
+.iconos-derecha {
+    display: flex;
+    gap: 15px;
+}
+
+#mi-componente a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+#mi-componente a img {
+    width: 24px;
+    height: 24px;
+    filter: invert(80%) sepia(20%) saturate(300%) hue-rotate(200deg) brightness(90%) contrast(90%);
+}
+
+#mi-componente a video {
+    width: 40px;
+    height: 40px;
+    filter: invert(80%) sepia(20%) saturate(300%) hue-rotate(200deg) brightness(90%) contrast(90%);
+}
+
+#mi-componente a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo claro al pasar el ratón */
+}
+
+#mi-componente a:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo más claro al hacer clic */
+}
+
+#mi-componente a.active {
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo más claro para el icono activo */
+    filter: invert(100%) sepia(100%) saturate(10%) hue-rotate(100deg) brightness(100%) contrast(100%);
+}
+
+.icono-equipo {
+    margin-left: 110px;
+}
+/* Estilo para el IconoCentral */
+/* Estilo para el IconoCentral */
+/* Estilo para el IconoCentral */
+/* Estilo para el IconoCentral */
+/* Estilo para el IconoCentral */
+/* Estilo para el IconoCentral */
+.base-animada{
+    position:relative;
+}
+.IconoCentralizado{
+    position:relative;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+
+
+
+
+/*¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡CONSOLA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡CONSOLA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡CONSOLA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/* Estilos generales para la consola */
+/* Estilos generales para la consola */
+.consola-formulario {
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    margin: 0;
+    background-color: rgba(30, 30, 30, 0.85);
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    font-family: monospace;
+    color: #e0e0e0;
+    display: "";
+    
+    flex-direction: column;
+    position: relative; /* Necesario para posicionar el div .salida relativo a este */
+}
+
+/* Estilo del encabezado */
+.consola-header {
+    display: flex;
+    justify-content:right;
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.8); /* Fondo con transparencia */
+    padding: 10px 15px;
+    color: #e0e0e0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+
+.consola-titulo {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    width: 80%;
+}
+
+/* Estilo del botón cerrar */
+.boton-cerrar {
+    background-color: #ff5c5c !important;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave en el botón */
+}
+
+.boton-cerrar:hover {
+    background-color: #ff2e2e !important;
+}
+
+/* Estilo para el formulario de la consola */
+.formulario-consola {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo para la entrada de comandos */
+.consola-entrada {
+    margin: 10px;
+    flex-grow: 1;
+}
+
+.entrada-comando {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(50, 50, 50, 0.8); /* Fondo semi-transparente */
+    color: #dcdcdc;
+    border: 1px solid #666;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    resize: none; /* Evita que el usuario cambie el tamaño */
+    height: 220px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.entrada-comando:hover,
+.entrada-comando:focus {
+    background-color: rgba(60, 60, 60, 0.9); /* Efecto hover y focus */
+    border-color: #888;
+}
+
+.entrada-comando::placeholder {
+    color: #aaa;
+}
+.consola-formulario::-webkit-scrollbar {
+    width: 8px !important; /* Ancho de la barra de desplazamiento */
+}
+
+.consola-formulario::-webkit-scrollbar-track {
+    background-color: rgba(30, 30, 30, 0.7) !important; /* Color de fondo de la pista con transparencia */
+    border-radius: 10px !important; /* Bordes redondeados */
+}
+
+.consola-formulario::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.8) !important; /* Color de la barra de desplazamiento */
+    border-radius: 10px !important; /* Bordes redondeados */
+    border: 2px solid rgba(30, 30, 30, 0.7) !important; /* Espacio alrededor de la barra, combinando con el fondo */
+    transition: background-color 0.3s ease !important; /* Transición suave al cambiar de color */
+}
+
+.consola-formulario::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(140, 140, 140, 0.9) !important; /* Color más claro al pasar el mouse */
+}
+
+.consola-formulario::-webkit-scrollbar-corner {
+    background-color: rgba(30, 30, 30, 0.7) !important; /* Coincide con el fondo de la pista */
+}
+    
+/* Estilo para la consola flotante */
+.consola-formulario {
+    position: absolute; /* Posición absoluta para moverla */
+    display: none;
+    z-index: 1000; /* Asegurarse de que la consola esté sobre otros elementos */
+}
+
+/* Estilos para el encabezado de la consola (para moverla) */
+.consola-header {
+    cursor: move; /* Cambiar el cursor al pasar por encima del encabezado */
+}
+
+/* Animación de despliegue y cierre */
+@keyframes despliegueConsola {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cierreConsola {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Aplica las animaciones */
+.consola-desplegada {
+    animation: despliegueConsola 0.3s ease-out forwards;
+}
+
+.consola-cerrada {
+    animation: cierreConsola 0.3s ease-out forwards;
+}
+/* Estilo para el contenedor del icono de salida */
+.icono-salida {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px; /* Alinear a la derecha con el mismo margen */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Estilo para la imagen dentro del icono de salida */
+.icono-salida img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Blanco sobre fondo oscuro */
+    transition: filter 0.3s ease;
+}
+
+/* Cambio de color a rojo cuando se pasa el mouse sobre el icono de salida */
+.icono-salida:hover img {
+    filter: invert(26%) sepia(85%) saturate(7488%) hue-rotate(358deg) brightness(105%) contrast(104%); /* Rojo */
+}
+
+/* Estilo para el contenedor del icono de análisis */
+.icono-analisis {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 20px; /* Alinear a la derecha con el mismo margen */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Estilo para la imagen dentro del icono de análisis */
+.icono-analisis img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Blanco sobre fondo oscuro */
+    transition: filter 0.3s ease;
+}
+
+/* Cambio de color a rojo cuando se pasa el mouse sobre el icono de análisis */
+.icono-analisis:hover img {
+    filter: invert(26%) sepia(85%) saturate(7488%) hue-rotate(358deg) brightness(105%) contrast(104%); /* Rojo */
+}
+
+
+.consola-header{
+    display:flex;
+    align-items: right;
+}
+.consola-header img{
+    position:relative;
+    align-content: right;
+}
+
+/*-------------------SALIDA------------------------*/
+/*-------------------SALIDA------------------------*/
+/*-------------------SALIDA------------------------*/
+/* Estilos generales para el div .salida */
+.salida {
+    width: 600px !important;
+    max-width:600px;
+    margin: 0px;
+    background-color: rgba(30, 30, 30, 0.85);
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    font-family: monospace;
+    color: #e0e0e0;
+    display: none;
+    flex-direction: column;
+    position: relative; /* Cambiamos a 'relative' */
+    top: 200px; /* Alineado al borde superior */
+    right: -400px; /* Pegado al lado derecho */
+    z-index: 1001; /* Asegura que esté encima de otros elementos */
+}
+
+
+
+/* Estilo para el div que contiene el resultado (pantalla de salida) */
+.pantalla-salida {
+    margin: 15px;
+}
+
+.pantalla-resultado {
+    width: 100%;
+    height: 150px;
+    background-color: rgba(50, 50, 50, 0.8);
+    color: #dcdcdc;
+    border: 1px solid #666;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 12px;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Estilo para el div que contiene los mensajes de error/aceptación y la tabla */
+.mensaje-y-tokens {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el cuadro de mensajes (error/aceptación) */
+.mensaje {
+    background-color: rgba(100, 100, 100, 0.6);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+#mensaje-consulta {
+    color: #ffcc00; /* Color para el mensaje de estado (error/aceptación) */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Estilo para la tabla de tokens */
+.tabla-tokens {
+    margin-top: 15px;
+}
+
+#tabla-tokens {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(50, 50, 50, 0.7);
+    color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#tabla-tokens th, #tabla-tokens td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.6);
+}
+
+#tabla-tokens th {
+    background-color: rgba(60, 60, 60, 0.8);
+    font-size: 16px;
+}
+
+#tabla-tokens td {
+    font-size: 14px;
+}
+
+/* Efecto hover para filas de la tabla */
+#tabla-tokens tr:hover {
+    background-color: rgba(60, 60, 60, 0.9);
+}
+
+
+
+/* Estilo para el header de salida, similar al de la consola */
+.salida-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.8); /* Fondo con transparencia */
+    padding: 10px 15px;
+    color: #e0e0e0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    cursor: move; /* Cambiar el cursor al pasar por encima del encabezado */
+}
+
+.salida-titulo {
+    font-size: 16px;
+    font-weight: 500px;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo del botón cerrar del header de salida */
+.boton-cerrar-salida {
+    background-color: #ff5c5c;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave en el botón */
+}
+
+.boton-cerrar-salida:hover {
+    background-color: #ff2e2e;
+}
+
+/* Animaciones de despliegue y cierre */
+@keyframes despliegueSalida {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cierreSalida {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+.salida-desplegada {
+    animation: despliegueSalida 0.3s ease-out forwards;
+    
+}
+
+.salida-cerrada {
+    animation: cierreSalida 0.3s ease-out forwards;
+}
+
+
+/*000000000000000000000000000000000000000000000000000*/
+/* Contenedor principal de ayuda */
+:root {
+    --ayuda-fondo: rgba(28, 28, 28, 0.9); /* Fondo con 90% de opacidad */
+    --ayuda-header-fondo: rgba(43, 43, 43, 0.9); /* Header con 90% de opacidad */
+    --ayuda-tarjeta-fondo: rgba(44, 44, 44, 0.9); /* Fondo de tarjeta con 90% de opacidad */
+    --ayuda-tarjeta-hover-fondo: rgba(53, 53, 53, 0.9); /* Fondo de tarjeta hover con 90% de opacidad */
+    --color-texto: #ddd;
+    --color-texto-header: #eee;
+    --color-highlight: #ffcc00;
+    --color-pre-fondo: #3a3a3a;
+    --color-pre-texto: #80cbc4;
+    --color-scrollbar: #555;
+    --color-scrollbar-hover: #666;
+}
+
+.ayuda {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 300px;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: var(--ayuda-fondo);
+    border: 1px solid #333;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    color: var(--color-texto);
+    font-family: 'Roboto', sans-serif;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    z-index: 2000;
+}
+
+/* Encabezado de ayuda */
+.ayuda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--ayuda-header-fondo);
+    padding: 10px 15px;
+    border-bottom: 1px solid #444;
+    border-radius: 10px 10px 0 0;
+    color: var(--color-texto-header);
+    font-weight: bold;
+}
+
+.ayuda-header span {
+    font-size: 1em;
+}
+
+/* Botón de cerrar */
+.boton-cerrar {
+    background: transparent;
+    border: none;
+    color: var(--color-texto-header);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Tarjeta de ayuda */
+.tarjeta-ayuda {
+    background-color: var(--ayuda-tarjeta-fondo);
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.tarjeta-ayuda:hover {
+    transform: scale(1.02);
+    background-color: var(--ayuda-tarjeta-hover-fondo);
+}
+
+.tarjeta-ayuda h3 {
+    color: var(--color-highlight);
+    font-size: 1.1em;
+    margin: 0 0 8px;
+}
+
+.tarjeta-ayuda p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #bbb;
+    margin-bottom: 8px;
+}
+
+/* Ejemplo de consulta en code */
+.tarjeta-ayuda pre {
+    background-color: var(--color-pre-fondo);
+    border-radius: 5px;
+    padding: 8px;
+    color: var(--color-pre-texto);
+    font-size: 0.85em;
+    overflow-x: auto;
+    margin: 0;
+}
+
+/* Animación de entrada */
+.ayuda.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scrollbar personalizado */
+.ayuda::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ayuda::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar);
+    border-radius: 4px;
+}
+
+.ayuda::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-scrollbar-hover);
+}
+
+/* Animación del botón de cerrar */
+@keyframes cerrar-animacion {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.boton-cerrar.cerrar-animacion {
+    animation: cerrar-animacion 0.4s forwards;
+}
+
+/*-----------------------EQUIPO----------------*/
+/*-----------------------EQUIPO----------------*/
+/*-----------------------EQUIPO----------------*/
+:root {
+    --color-fondo: rgba(18, 18, 18, 0.9); /* Fondo con 90% de opacidad */
+    --color-texto: #ffffff;
+    --color-header: rgba(30, 30, 30, 0.9); /* Header con 90% de opacidad */
+    --color-boton: #ff5c5c;
+    --color-boton-hover: #ff2e2e;
+    --color-perfil-fondo: rgba(40, 40, 40, 0.9); /* Fondo de perfil con 90% de opacidad */
+    --color-perfil-texto: #b3b3b3;
+}
+
+.equipo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-fondo);
+    padding: 15px; /* Reducido el padding para ajustarse mejor */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+    z-index: 3000;
+}
+
+.equipo-container.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.equipo-container.closed {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.equipo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: var(--color-header);
+    padding: 10px 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.equipo-header h2 {
+    margin: 0;
+    color: var(--color-texto);
+}
+
+.cerrar-equipo {
+    background-color: var(--color-boton);
+    color: var(--color-texto);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.cerrar-equipo:hover {
+    background-color: var(--color-boton-hover);
+}
+
+.programador {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-perfil-fondo);
+    margin: 8px 0; /* Reducido el margen */
+    padding: 10px; /* Reducido el padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 85%; /* Ajustado el ancho */
+}
+
+.foto-perfil {
+    width: 100px; /* Reducido el tamaño de la imagen */
+    height: 100px; /* Reducido el tamaño de la imagen */
+    border-radius: 50%;
+    margin-right: 10px; /* Reducido el margen */
+}
+
+.info-programador {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-programador {
+    font-size: 16px; /* Reducido el tamaño de la fuente */
+    color: var(--color-texto);
+}
+
+.leyenda-programador {
+    font-size: 12px; /* Reducido el tamaño de la fuente */
+    color: var(--color-perfil-texto);
+}
+
+
+/*MODO OSCURO Y CLARO*/
+/*MODO OSCURO Y CLARO*/
+/*MODO OSCURO Y CLARO*/
+/*MODO OSCURO Y CLARO*/
+/*MODO OSCURO Y CLARO*/
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+/* Estilo para el div DiaNoche */
+.DiaNoche {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px; /* Aumentamos el tamaño para mayor visibilidad */
+    height: 50px; /* Aumentamos el tamaño para mayor visibilidad */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo ligeramente transparente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19); /* Sombra */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.DiaNoche:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo más claro al pasar el ratón */
+    transform: scale(1.1); /* Aumenta ligeramente de tamaño al pasar el ratón */
+}
+
+.icono-modo {
+    width: 30px; /* Aumentamos el tamaño para mayor visibilidad */
+    height: 30px; /* Aumentamos el tamaño para mayor visibilidad */
+    filter: grayscale(100%) opacity(0.8); /* Estilo grisáceo y transparencia */
+    transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out; /* Transición suave */
+}
+
+#iconoClaro {
+    display: none; /* Iniciar oculto porque estamos en modo oscuro */
+}
+
+body.modo-claro #iconoClaro {
+    display: block;
+}
+
+body.modo-claro #iconoOscuro {
+    display: none;
+}
+
+body.modo-oscuro #iconoOscuro {
+    display: block;
+}
+
+body.modo-oscuro #iconoClaro {
+    display: none;
+}
+
+/* Transición de Fondo con Colores */
+body {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #0e0e0e; /* Color inicial para modo oscuro */
+    transition: background-color 1s ease-in-out; /* Transición de color */
+}
+
+body.modo-claro {
+    background-color: #f0f0f0; /* Color para modo claro */
+}
+
+/* Estilo para el logo centrado */
+#backgroundContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logoCentral {
+    position: absolute;
+    max-width: 50%;
+    max-height: 50%;
+    animation: changeColor 3s infinite alternate; /* Añadir la animación */
+}
+
+/* Animación para cambiar el color del logo */
+@keyframes changeColor {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+/**VENTANA ANALISIS**/
+/**VENTANA ANALISIS**//**VENTANA ANALISIS**/
+/**VENTANA ANALISIS**/
+/**VENTANA ANALISIS**/
+/**VENTANA ANALISIS**/
+/* Estilos generales para el div .resultado-container */
+/* Estilos generales para el div .resultado-container */
+
+/* Estilos generales para el div .data-container */
+/* Estilos generales para el div .data-container */
+.data-container {
+    width: 600px;
+    max-width: 600px;
+    margin: 0;
+    background-color: rgba(30, 30, 30, 0.85); /* Fondo oscuro con transparencia */
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    font-family: monospace;
+    color: #e0e0e0;
+    display: none; /* Oculto por defecto */
+    flex-direction: column;
+    position: absolute; /* Cambiado a 'absolute' para permitir el arrastre */
+    top: 200px;
+    right: 400px;
+    z-index: 1001;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    max-height: 90vh; /* Altura máxima del 70% de la altura de la ventana */
+    overflow-y: auto; /* Permitir desplazamiento vertical */
+}
+
+/* Estilo para el header */
+.data-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(20, 20, 20, 0.9); /* Fondo más oscuro */
+    padding: 10px 15px;
+    color: #e0e0e0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    cursor: move; /* Cambiar el cursor al pasar por encima del encabezado */
+}
+
+.data-title {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo del botón cerrar */
+.close-button {
+    background-color: #ff5c5c !important;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.close-button:hover {
+    background-color: #ff2e2e !important;
+}
+
+/* Estilo para el contenido */
+.data-content {
+    padding: 15px;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    white-space: pre-wrap; /* Mantiene el formato de espacios y saltos de línea */
+}
+
+/* Animaciones de despliegue y cierre */
+@keyframes abrirData {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cerrarData {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+.data-desplegado {
+    animation: abrirData 0.3s ease-out forwards;
+}
+
+.data-cerrado {
+    animation: cerrarData 0.3s ease-out forwards;
+}
+
+/* Estilos para los resultados y tokens */
+.resultado, .error, .tokens {
+    margin-bottom: 5px; /* Reducir margen inferior */
+}
+
+.resultado h3, .error h3, .tokens h3 {
+    color: #ffcc00;
+    margin-bottom: 5px; /* Reducir margen inferior */
+}
+
+.resultado p, .error p {
+    background-color: rgba(60, 60, 60, 0.8);
+    padding: 10px;
+    border-radius: 6px;
+    color: #e0e0e0;
+    margin-bottom: 5px; /* Reducir margen inferior */
+}
+
+.tokens table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 0; /* Reducir margen superior */
+}
+
+.tokens th, .tokens td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.6);
+}
+
+.tokens th {
+    background-color: rgba(60, 60, 60, 0.9);
+    color: #e0e0e0;
+    font-size: 16px;
+}
+
+.tokens td {
+    color: #dcdcdc;
+    font-size: 14px;
+}
+
+/* Efecto hover para filas de la tabla */
+.tokens tr:hover {
+    background-color: rgba(70, 70, 70, 0.9);
+}

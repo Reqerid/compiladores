@@ -1,13 +1,13 @@
 import ply.lex as lex
 import ply.yacc as yacc
-import flask
+
 # Analizador léxico
 tokens = (
     'SELECT', 'INSERT', 'INTO', 'DELETE', 'UPDATE', 'CREATE', 'TABLE', 'DROP', 'ALTER',
     'TRUNCATE', 'SHOW', 'TABLES', 'DESCRIBE', 'FROM', 'WHERE', 'SET', 'VALUES',
     'ID', 'NUMBER', 'STRING', 'COMMA', 'LPAREN', 'RPAREN', 'SEMICOLON', 'STAR',
     'EQUALS', 'ADD', 'MODIFY', 'COLUMN', 'INT', 'VARCHAR', 'AUTO_INCREMENT', 'PRIMARY', 'KEY',
-    'USE'  
+    'USE', 'DATABASE'  
 )
 
 t_SELECT = r'SELECT'
@@ -41,7 +41,8 @@ t_VARCHAR = r'VARCHAR'
 t_AUTO_INCREMENT = r'AUTO_INCREMENT'
 t_PRIMARY = r'PRIMARY'
 t_KEY = r'KEY'
-t_USE = r'USE'  
+t_USE = r'USE'
+t_DATABASE = r'DATABASE'
 
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
@@ -75,7 +76,9 @@ def p_statement(p):
                  | delete_statement
                  | update_statement
                  | create_table_statement
+                 | create_database_statement
                  | drop_table_statement
+                 | drop_database_statement
                  | alter_table_statement
                  | truncate_statement
                  | show_tables_statement
@@ -101,6 +104,10 @@ def p_update_statement(p):
     '''update_statement : UPDATE ID SET update_list where_clause SEMICOLON'''
     p[0] = f"UPDATE statement: {' '.join(str(x) for x in p[1:])}"
 
+def p_create_database_statement(p):
+    '''create_database_statement : CREATE DATABASE ID SEMICOLON'''
+    p[0] = f"CREATE DATABASE statement: {' '.join(str(x) for x in p[1:])}"
+
 def p_create_table_statement(p):
     '''create_table_statement : CREATE TABLE ID LPAREN column_definitions RPAREN SEMICOLON'''
     p[0] = f"CREATE TABLE statement: {' '.join(str(x) for x in p[1:])}"
@@ -108,6 +115,10 @@ def p_create_table_statement(p):
 def p_drop_table_statement(p):
     '''drop_table_statement : DROP TABLE ID SEMICOLON'''
     p[0] = f"DROP TABLE statement: {' '.join(str(x) for x in p[1:])}"
+
+def p_drop_database_statement(p):
+    '''drop_database_statement : DROP DATABASE ID SEMICOLON'''
+    p[0] = f"DROP DATABASE statement: {' '.join(str(x) for x in p[1:])}"
 
 def p_alter_table_statement(p):
     '''alter_table_statement : ALTER TABLE ID ADD COLUMN column_definition SEMICOLON
@@ -243,11 +254,13 @@ if __name__ == "__main__":
         "UPDATE users SET name = 'Jane' WHERE id = 1;",
         "CREATE TABLE usuarios (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(100), edad INT);",
         "DROP TABLE users;",
+        "DROP DATABASE new_database;",
         "ALTER TABLE users ADD COLUMN email VARCHAR(255);",
         "TRUNCATE TABLE users;",
         "SHOW TABLES;",
         "DESCRIBE users;",
-        "USE mydatabase;"
+        "USE mydatabase;",
+        "CREATE DATABASE new_database;"
     ]
 
     for sql in sql_statements:

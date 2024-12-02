@@ -7,30 +7,56 @@ error_reporting(E_ALL);
 // Incluir archivo de conexión a la base de datos
 include('../Conexión/conectabd.php');
 
-// Obtener la consulta SQL desde el cuerpo de la solicitud
-$data = json_decode(file_get_contents("php://input"), true);
-$sql = $data['sql'] ?? '';  // Obtener la consulta SQL del JSON
+// Asegurarse de que la respuesta sea JSON
+header('Content-Type: application/json');
 
 $response = [];
 
+// Obtener la consulta SQL desde el cuerpo de la solicitud
+$data = json_decode(file_get_contents("php://input"), true);
+$sql = $data['sql'] ?? '';
+
 if ($sql) {
-    // Ejecutar la consulta SQL
-    $resultado = $mysqli->query($sql);
-    
-    if ($resultado) {
-        // Si la consulta tiene resultados, devolverlos
-        if ($resultado->num_rows > 0) {
-            $rows = [];
-            while ($row = $resultado->fetch_assoc()) {
-                $rows[] = $row;
-            }
-            $response = ["data" => $rows];
-        } else {
-            $response = ["data" => []];
+    // Separar las sentencias en caso de múltiples comandos
+    $queries = explode(';', $sql);
+
+    // Ejecutar la primera consulta para seleccionar la base de datos
+    $dbSelected = trim($queries[0]);
+    if (strpos($dbSelected, 'USE') === 0) {
+        try {
+            $mysqli->query($dbSelected);
+            array_shift($queries); // Remover el comando USE de la lista de consultas
+        } catch (mysqli_sql_exception $e) {
+            echo json_encode(["error" => "Error en la selección de base de datos: " . $e->getMessage()]);
+            exit;
         }
-    } else {
-        // Si hay un error en la consulta SQL
-        $response = ["error" => "Error en la ejecución de la consulta: " . $mysqli->error];
+    }
+
+    // Ejecutar las consultas restantes
+    foreach ($queries as $query) {
+        $query = trim($query);
+        if ($query) {
+            try {
+                $resultado = $mysqli->query($query);
+                if ($resultado) {
+                    if ($resultado->num_rows > 0) {
+                        $rows = [];
+                        while ($row = $resultado->fetch_assoc()) {
+                            $rows[] = $row;
+                        }
+                        $response = ["data" => $rows];
+                    } else {
+                        $response = ["data" => []];
+                    }
+                } else {
+                    $response = ["error" => "Error en la consulta SQL: " . $mysqli->error];
+                    break;
+                }
+            } catch (mysqli_sql_exception $e) {
+                $response = ["error" => "Error en la consulta SQL: " . $e->getMessage()];
+                break;
+            }
+        }
     }
 } else {
     $response = ["error" => "No se recibió ninguna consulta SQL."];
@@ -38,7 +64,5 @@ if ($sql) {
 
 // Enviar la respuesta en formato JSON
 echo json_encode($response);
-
-// Cerrar la conexión a la base de datos
 $mysqli->close();
 ?>

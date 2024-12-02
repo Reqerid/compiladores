@@ -1,0 +1,41 @@
+
+Instrucciones SQL Y Ejemplos de uso:
+
+SELECT –- Recupera datos de una o varias tablas en la base de datos.
+ejemplo: SELECT id, name FROM users WHERE id = 1;
+
+INSERT INTO –- Inserta nuevos registros en una tabla específica.
+ejemplo: INSERT INTO users (id, name) VALUES (1, 'John');
+
+DELETE –- Elimina uno o más registros de una tabla.
+DELETE FROM users WHERE id = 1;
+
+UPDATE –- Modifica datos existentes en una tabla.
+UPDATE users SET name = 'Jane' WHERE id = 1;
+
+CREATE TABLE –- Crea una nueva tabla en la base de datos con columnas y tipos de datos definidos.
+CREATE TABLE usuarios (id INT AUTO_INCREMENT PRIMARY KEY, nombre VARCHAR(100), edad INT);
+
+DROP TABLE –- Elimina por completo una tabla de la base de datos y todos sus datos.
+DROP TABLE users;
+
+ALTER TABLE –- Modifica la estructura de una tabla, como agregar o eliminar columnas.
+ALTER TABLE users ADD COLUMN email VARCHAR(255);
+
+TRUNCATE –- Elimina todos los registros de una tabla sin borrar su estructura.
+TRUNCATE TABLE users;
+
+SHOW TABLES –- Muestra todas las tablas existentes en la base de datos actual.
+SHOW TABLES;
+
+DESCRIBE –- Muestra la estructura de una tabla, incluyendo columnas y tipos de datos.
+DESCRIBE users;
+
+CREATE DATABASE –- Crea una nueva base de datos.
+CREATE DATABASE new_database;
+
+USE DATABASE –- Selecciona una base de datos para trabajar con ella.
+USE mydatabase;
+
+DROP DATABASE –- Elimina una base de datos completa junto con todas sus tablas y datos. Esta operación es irreversible y debe usarse con precaución.
+DROP DATABASE new_database;
