@@ -1,0 +1,13 @@
+Argentina;Buenos Aires;2780400;45195
+Brasil;Brasilia;8515767;212559
+Canada;Ottawa;9984670;37742
+China;Beijing;9596961;1439324
+Egipto;El Cairo;1010408;102334
+Francia;Paris;551695;65273
+Alemania;Berlin;357022;83784
+India;Nueva Delhi;3287263;1380004
+Japon;Tokio;377975;126476
+Mexico;Ciudad de Mexico;1964375;128932
+Rusia;Moscu;17098242;144104
+Sudafrica;Pretoria;1221037;59309
+Estados Unidos;Washington D.C.;9833517;331003

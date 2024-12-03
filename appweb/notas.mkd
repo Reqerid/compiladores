@@ -1,0 +1,7 @@
+escribir correo y password para el login 
+que valide en la base de datos
+
+1.- Leer las variables desde el servidor
+2.- La variable name del html es la que almacena los datos
+
+*el metodo post hace que los datos que enviamos en la barra de navegación, cosa que get si hace que se vea.
